@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Documento senza titolo</title>
+<script type="text/javascript" src="jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="jquery.validate.js"></script>
+</head>
+
+<body>
+<form id="modulo" method="post" action="invio.php">
+<p>
+    <label>Nome</label>
+    <input type="text" id="nome" name="nome">
+</p>
+<p>
+    <label>Cognome</label>
+    <input type="text" id="cognome" name="cognome">
+</p>
+<p>
+    <label>Nickname</label>
+    <input type="text" id="nickname" name="nickname">
+</p>
+<p>
+    <label>Password</label>
+    <input type="password" id="password" name="password">
+</p>
+<p>
+    <label>Conferma la password</label>
+    <input type="password" id="conferma" name="conferma">
+</p>
+<p>
+    <label>Email</label>
+    <input type="text" id="email" name="email">
+</p>
+<p>
+    <label>Accetti i trrmini del servizio?</label>
+    <input type="checkbox" id="accetto" name="accetto">
+</p>
+<input type="submit" value="Invia i dati">
+</form>
+<script type="text/javascript">
+$(document).ready(function()
+{
+    $("#modulo").validate(
+    {
+        rules:
+        {
+            nome: "required",
+            cognome: "required",
+            nickname: "required",
+            password: "required",
+            conferma:
+            {
+                required: true,
+                equalTo: "#password"
+            },
+            email:
+            {
+                required: true,
+                email: true
+            },
+            accetto: "required"
+        },
+        messages:
+        {
+            nome: " Inserisci il tuo nome!",
+            cognome: " Inserisci il tuo cognome!",
+            nickname: " Scegli un nickname!",
+            password: " Scegli una password!",
+            conferma: " La conferma non corrisponde alla scelta della password!",
+            email: " Inserisci un indirizzo email valido!",
+            accetto: "Non hai accettato i termini del servizio!"
+        }
+    });
+});
+</script>
+</body>
+</html>
